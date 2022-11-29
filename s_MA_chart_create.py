@@ -7,7 +7,11 @@ datetoday = today.strftime("%Y-%m-%d")
 
 
 
-from j_GL_dictionary_create_3 import earnedpremiumc,labelsc,ultimatelossratio,paidlossc,casereservec,ibnrc
+
+
+
+
+from r_MA_dictionary_create_3 import earnedpremiumc, labelsc, ultimatelossratio, paidlossc, casereservec, ibnrc
 
 import matplotlib.pyplot as plt
 
@@ -44,7 +48,12 @@ ax2.bar(labelsc,ibnrc,label='IBNR balance')
 ax2.set_ylabel("EArned Premium",color="blue",fontsize=14)
 # plt.show()
 # save the plot as a file
-fig.savefig('_Outputs/GL_Ultimate_Loss_Ratio_'+str(datetoday)+'.jpg',
+fig.savefig('_Outputs/MA_Ultimate_Loss_Ratio_'+str(datetoday)+'.jpg',
             format='jpeg',
             dpi=100,
             bbox_inches='tight')
+
+
+
+
+

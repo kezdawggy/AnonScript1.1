@@ -1,17 +1,21 @@
-####Build GL-np Dictionary  Stats
-from d_GL_gather_stats import prem_stats
-from f_fix_header import headerstatsfinal
-from e_GL_gather_year import year
+from n_MA_fix_header import headerstats, headerstatsfinal
+from lb_MA_gather_stats import prem_stats
+from m_MA_gather_year import year
+####Build MA-np Dictionary  Stats
 import json
 import os
 from datetime import date
 from datetime import datetime
 today = date.today()
 datetoday = today.strftime("%Y-%m-%d")
+import csv
+print("Blights ")
+print("test",prem_stats)
 
 # print(data)
 # print([dict(zip(headerstatsfinal, i)) for i in prem_stats])
 dictstats=[dict(zip(headerstatsfinal, i)) for i in prem_stats]
+print(dictstats)
 # print(dictstats)
 dictstats=[dict(zip(year, dictstats))]
 # print(dictstats)
@@ -43,7 +47,7 @@ for key in dictstats:
 #           print(i+counter)
             yeardict={"Year":v}
             compname={'CompanyName':'XYZ'}
-            lob={'LineofBusiness': 'GL-np'}
+            lob={'LineofBusiness': 'MA-np'}
             dwcrreatedDate={"DWCreatedDate":datetoday}
             dwcreatedby={"DWCreatedBy":"KDKelly"}
             dictstats[key].update(yeardict)
@@ -51,11 +55,29 @@ for key in dictstats:
             dictstats[key].update(dwcrreatedDate)
             dictstats[key].update(dwcreatedby)
             dictstats[key].update(lob)
+     
         else:
             pass  
     counter=counter+1 
         
-    
+csv_file=f"_Outputs/MA_Claim_Development_Fact_Statistical "+str(datetoday)+".csv"  
+
+csv_columns=[12, 24 ,36, 48, 60, 72, 84, 96, 108, 120, 132, 144, 'Gross written premium', 'DWCreatedBy', 'Year', 'CompanyName', 'DWCreatedDate']
+
+csv_columns=["CompanyName", "Year", "LineofBusiness",12, 24 ,36, 48, 60, 72, 84, 96, 108, 120, 132, 144, 'Gross written premium', 'DWCreatedBy', 'DWCreatedDate']
+
+
+
+try:
+    with open(csv_file, 'w') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=csv_columns)
+        writer.writeheader()
+        for data in dictstats:
+          
+            writer.writerow(dictstats[key])
+except IOError:
+    print("I/O error")
+
 
 
 # print(dictstats)
@@ -64,23 +86,13 @@ for key in dictstats:
 print("jsontest")
 print(json.dumps(dictstats))
 
-
-import json
  
-FileNameJsonGLStat=f"_Outputs/GL_Claim_Development_Fact_Statistical "+str(datetoday)+".json"
+FileNameJsonMAStat=f"_Outputs/MA_Claim_Development_Fact_Statistical "+str(datetoday)+".json"
  
-with open(FileNameJsonGLStat, "w") as outfile:
+with open(FileNameJsonMAStat, "w") as outfile:
     json.dump(dictstats, outfile)
 
 
 
 
 
-
-
-
-
-# # Method 1
-# import pandas as pd
-# df = pd.DataFrame(dictstats)
-# df.to_csv('my_file.csv', index=False, header=True)
