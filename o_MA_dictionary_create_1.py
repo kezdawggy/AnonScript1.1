@@ -68,15 +68,15 @@ csv_columns=["CompanyName", "Year", "LineofBusiness",12, 24 ,36, 48, 60, 72, 84,
 
 
 
-try:
-    with open(csv_file, 'w') as csvfile:
-        writer = csv.DictWriter(csvfile, fieldnames=csv_columns)
-        writer.writeheader()
-        for data in dictstats:
+# try:
+#     with open(csv_file, 'w') as csvfile:
+#         writer = csv.DictWriter(csvfile, fieldnames=csv_columns)
+#         writer.writeheader()
+#         for data in dictstats:
           
-            writer.writerow(dictstats[key])
-except IOError:
-    print("I/O error")
+#             writer.writerow(dictstats[key])
+# except IOError:
+#     print("I/O error")
 
 
 

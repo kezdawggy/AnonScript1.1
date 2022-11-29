@@ -1,6 +1,10 @@
 from q_MA_dictionary_create_2 import dictbook
-
-
+import os
+from datetime import date
+from datetime import datetime
+today = date.today()
+datetoday = today.strftime("%Y-%m-%d")
+import json
 
 
 paidloss=[]
@@ -42,14 +46,22 @@ for key in dictbook:
 #         print(i+counter)
          ultimatedict={"Ultimate Loss Ratio":v}
          dictbook[key].update(ultimatedict)
-        
+         lob={'LineofBusiness': 'GL-np'}   ##yes
+         createdDate={"DWCreatedDate":datetoday} ##yes
+         dwcreatedby={"DWCreatedBy":"KDKelly"}   ###yes
+         dictbook[key].update(createdDate)
+         dictbook[key].update(dwcreatedby)
+         dictbook[key].update(lob)        
         
        else:
         pass
     counter=+1
 print(dictbook)
 
-
+FileNameJsonMABook=f"_Outputs/MA_Claim_Development_Fact_Data "+str(datetoday)+".json"
+ 
+with open(FileNameJsonMABook, "w") as outfile:
+    json.dump(dictbook, outfile)
 
 
 
