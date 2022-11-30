@@ -60,11 +60,11 @@ for key in dictstats:
             pass  
     counter=counter+1 
         
-csv_file=f"_Outputs/MA_Claim_Development_Fact_Statistical "+str(datetoday)+".csv"  
+# csv_file=f"_Outputs/MA_Claim_Development_Fact_Statistical "+str(datetoday)+".csv"  
 
-csv_columns=[12, 24 ,36, 48, 60, 72, 84, 96, 108, 120, 132, 144, 'Gross written premium', 'DWCreatedBy', 'Year', 'CompanyName', 'DWCreatedDate']
+# csv_columns=[12, 24 ,36, 48, 60, 72, 84, 96, 108, 120, 132, 144, 'Gross written premium', 'DWCreatedBy', 'Year', 'CompanyName', 'DWCreatedDate']
 
-csv_columns=["CompanyName", "Year", "LineofBusiness",12, 24 ,36, 48, 60, 72, 84, 96, 108, 120, 132, 144, 'Gross written premium', 'DWCreatedBy', 'DWCreatedDate']
+# csv_columns=["CompanyName", "Year", "LineofBusiness",12, 24 ,36, 48, 60, 72, 84, 96, 108, 120, 132, 144, 'Gross written premium', 'DWCreatedBy', 'DWCreatedDate']
 
 
 
